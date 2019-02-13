@@ -1,5 +1,5 @@
 {
-  "name": "xiaohei2015/BaziWuxing",
+  "name": "xiaohei2015/BaZiWuXing",
   "description": "根据八字计算其五行 喜用神",
   "keywords": [
     "八字",
@@ -7,7 +7,7 @@
     "喜用神"
   ],
   "type": "library",
-  "homepage": "https://github.com/xiaohei2015/BaziWuxing",
+  "homepage": "https://github.com/xiaohei2015/BaZiWuXing",
   "license": "MIT",
   "authors": [
     {
