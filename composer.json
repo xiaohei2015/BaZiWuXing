@@ -1,0 +1,26 @@
+{
+  "name": "xiaohei2015/BaziWuxing",
+  "description": "根据八字计算其五行 喜用神",
+  "keywords": [
+    "八字",
+    "五行",
+    "喜用神"
+  ],
+  "type": "library",
+  "homepage": "https://github.com/xiaohei2015/BaziWuxing",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "xiaohei2015",
+      "homepage": "http://www.51getname.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xiaohei2015\\BaziWuxing\\": "src/"
+    }
+  }
+}
