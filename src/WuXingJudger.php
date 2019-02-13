@@ -32,8 +32,8 @@ class WuXingJudger
 
     private function init($ba_zi)
     {
-        if(mb_strlen($ba_zi) <> 8){
-            throw new \Exception('参数有误！');
+        if(mb_strlen($ba_zi, 'UTF-8') <> 8){
+            throw new \Exception('参数有误，参数个数为：'.mb_strlen($ba_zi));
         }
 
         $this->year_gan = mb_substr($ba_zi,0,1,'UTF-8');
@@ -74,6 +74,27 @@ class WuXingJudger
             }
         }
         //地支
+        $arr_zhi = [$this->year_zhi, $this->month_zhi, $this->day_zhi, $this->hour_zhi];
+        foreach($arr_zhi as $v){
+            $arr_cang = DiZhiEntity::getStrengthByDiZhiAndMonth($v, $this->month_zhi);
+            foreach($arr_cang as $k=>$v){
+                if(self::isProperty($k, $wu_xing)){
+                    $strength += $v;
+                }
+            }
+        }
 
+        return sprintf('%.3f', $strength);
+    }
+
+    public function getStrengthResult()
+    {
+        return [
+            self::JIN   => $this->getStrengthByWuXing(self::JIN),
+            self::MU    => $this->getStrengthByWuXing(self::MU),
+            self::SHUI  => $this->getStrengthByWuXing(self::SHUI),
+            self::HUO   => $this->getStrengthByWuXing(self::HUO),
+            self::TU    => $this->getStrengthByWuXing(self::TU),
+        ];
     }
 }
