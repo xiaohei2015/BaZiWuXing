@@ -18,10 +18,26 @@ $ba_zi = $_POST['ba_zi'];
 
 <?php
 if($ba_zi){
+    $result = GladUseGod::getGladUseGodDetails($ba_zi);
 ?>
-    <br/>测算结果：
+    <br/>测算结果：<br/>
+    五行同类：<?php echo $result['same'][0].','.$result['same'][1].'  得分：'.$result['strength_same']; ?><br/><br/>
+    五行异类：<?php echo $result['diff'][0].','.$result['diff'][1].','.$result['diff'][2].'  得分：'.$result['strength_diff']; ?><br/><br/>
+    喜用神：<?php
+    $str_glad_use_god = '';
+    foreach ($result['glad_use_god'] as $v){
+        $str_glad_use_god .= $v.',';
+    }
+    $str_glad_use_god = mb_substr($str_glad_use_god, 0, mb_strlen($str_glad_use_god,'UTF-8')-1,'UTF-8');
+    echo $str_glad_use_god;
+    ?><br/><br/>
+    五行详情：<br/><?php
+    foreach($result['strength_all'] as $k=>$v){
+        echo $k.':'.$v.'<br/>';
+    }
+    ?>
 <?php
-    var_dump(GladUseGod::getGladUseGodDetails($ba_zi));
+    var_dump();
 }
 ?>
 </body>
