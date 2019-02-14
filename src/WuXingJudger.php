@@ -63,6 +63,20 @@ class WuXingJudger
         }
     }
 
+    public static function getProperty($name)
+    {
+        $property = TianGanEntity::getPropertyByTianGan($name);
+        if($property){
+            return $property;
+        }else{
+            $property = DiZhiEntity::getPropertyByDiZhi($name);
+            if($property){
+                return $property;
+            }else
+                return false;
+        }
+    }
+
     public function getStrengthByWuXing($wu_xing)
     {
         $strength = 0;
@@ -96,5 +110,10 @@ class WuXingJudger
             self::HUO   => $this->getStrengthByWuXing(self::HUO),
             self::TU    => $this->getStrengthByWuXing(self::TU),
         ];
+    }
+
+    public function getDayGan()
+    {
+        return $this->day_gan;
     }
 }
